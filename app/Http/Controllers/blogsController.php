@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\blogs;
+use Markdown;
+
 
 class blogsController extends Controller
 {
@@ -19,6 +21,9 @@ class blogsController extends Controller
     public function detail($id = null){
         $blog = false;
         $blog = blogs::find($id);
+        
+        
+
         return view('blogs/detail',[
             'blog'=>$blog
         ]);                                                                                                                
@@ -39,6 +44,6 @@ class blogsController extends Controller
             $blog = blogs::create($request->all());
         }
         
-        return redirect('blogs/list');
+        return redirect("blogs/detail/{$blog->id}");
     }
 }

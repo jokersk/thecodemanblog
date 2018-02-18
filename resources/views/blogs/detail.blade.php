@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
-
+<style>
+    code{
+        background-color: #d1ecf1;
+        padding:10px;
+        display: block;
+        border-radius: 5px;
+    }
+</style>
 <div class="container">
 
 <h4>{{ $blog? $blog->title : 'blog' }}</h4>
@@ -23,6 +30,12 @@
         <div class="input-field col s12">
           <textarea name="content" id="textarea1" class="materialize-textarea">{{$blog ? $blog->content : ''}}</textarea>
           <label for="textarea1">Textarea</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            {!! $blog->result !!}
         </div>
     </div>
 

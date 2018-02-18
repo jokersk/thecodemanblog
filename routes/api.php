@@ -23,6 +23,11 @@ Route::middleware('cross')->get('blogs-list', function()
 });
 
 Route::middleware('cross')->get('blog/{id}', function($id)
-{
-    return response()->json(blogs::find($id)->toArray());
+{   
+    $blog = blogs::find($id);
+    $return  = [
+        "title"=>$blog->title,
+        "content"=>$blog->content
+    ];
+    return response()->json($return);
 });
