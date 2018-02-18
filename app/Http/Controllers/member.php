@@ -31,6 +31,8 @@ class member extends Controller
     
     }
 
+    
+
     public function postRegister(Request $request){
         $credentials = [
             'email'    => $request->email,

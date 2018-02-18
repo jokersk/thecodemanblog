@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'cross'=> \App\Http\Middleware\EnableCrossRequestMiddleware::class
+        'cross'=> \App\Http\Middleware\EnableCrossRequestMiddleware::class,
+        'checkLogin'=> \App\Http\Middleware\checkLogin::class
     ];
 }

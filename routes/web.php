@@ -14,9 +14,13 @@
 Route::get('/', 'member@login_form');
 Route::post('/login', 'member@login');
 
-Route::get('blogs/list','blogsController@list');
-Route::get('blogs/detail/{id?}','blogsController@detail');
-Route::post('blogs/create','blogsController@create');
+
+Route::middleware(['checkLogin'])->group(function () {
+    Route::get('blogs/list','blogsController@list');
+    Route::get('blogs/detail/{id?}','blogsController@detail');
+    Route::post('blogs/create','blogsController@create');
+});
+
 
 
 
