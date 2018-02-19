@@ -25,9 +25,6 @@ Route::middleware('cross')->get('blogs-list', function()
 Route::middleware('cross')->get('blog/{id}', function($id)
 {   
     $blog = blogs::find($id);
-    $return  = [
-        "title"=>$blog->title,
-        "content"=>$blog->content
-    ];
-    return response()->json($return);
+    
+    return response()->json($blog->toArray());
 });
