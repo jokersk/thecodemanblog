@@ -23,6 +23,7 @@ class blogsController extends Controller
         $comments->blogs_id = $request->blodId;
         $comments->user_id = 0;
         $comments->body = $request->body;
+        $comments->ip_address = \Request::getClientIp(true);
         $comments->save();
 
         return response()->json(["message"=>"save success!"]);
