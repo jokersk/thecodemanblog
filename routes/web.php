@@ -21,6 +21,10 @@ Route::middleware(['checkLogin'])->group(function () {
     Route::post('blogs/create','blogsController@create');
 });
 
+Route::get("test",function(){
+    return \Request::getClientIp(true);
+});
+
 
 
 
