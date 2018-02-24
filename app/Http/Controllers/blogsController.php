@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\blogs;
 use Markdown;
-
+use App\Models\comments;
+use Illuminate\Support\Facades\Log;
 
 class blogsController extends Controller
 {
@@ -16,14 +17,25 @@ class blogsController extends Controller
         ]);
     }
 
-    
+    public function postComment(Request $request){
+    //    Log::info($request);
+        $comments = new comments();
+        $comments->blogs_id = $request->blodId;
+        $comments->user_id = 0;
+        $comments->body = $request->body;
+        $comments->save();
+
+        return response()->json(["message"=>"save success!"]);
+    }
+
+    public function getComments($blogId){
+        $comments = comments::where("blogs_id",$blogId)->orderBy('created_at',"desc")->get();
+        return response()->json($comments->toArray());
+    }
 
     public function detail($id = null){
         $blog = false;
         $blog = blogs::find($id);
-        
-        
-
         return view('blogs/detail',[
             'blog'=>$blog
         ]);                                                                                                                

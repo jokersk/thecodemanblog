@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Parsedown;
+use App\Models\comments;
 
 class blogs extends Model
 {
@@ -15,6 +16,10 @@ class blogs extends Model
     {
         $Parsedown = new Parsedown();
         return  $Parsedown->text($this->content);
+    }
+
+    public function comments(){
+        return $this->hasMany(comments::class);
     }
 
 }

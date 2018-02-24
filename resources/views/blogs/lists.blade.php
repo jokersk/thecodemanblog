@@ -10,7 +10,7 @@
           <tr>
               <th>Id</th>
               <th>Blog Title</th>
-              <th>Blog Content</th>
+              
               <th>Action</th>
           </tr>
         </thead>
@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{$blog->id}}</td>
                     <td>{{$blog->title}}</td>
-                    <td>{!! nl2br($blog->content) !!}</td>
+                    
                     <td> 
                         <a class="btn" href='{{url("blogs/detail/{$blog->id}")}}'  >edit</a>
                     </td>

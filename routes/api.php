@@ -13,18 +13,19 @@ use App\Models\blogs;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::middleware('cross')->get('blogs-list', function()
+
+Route::get('blogs-list', function()
 {
     return response()->json(blogs::all()->toArray());
 });
 
-Route::middleware('cross')->get('blog/{id}', function($id)
+Route::get('blog/{id}', function($id)
 {   
     $blog = blogs::find($id);
-    
     return response()->json($blog->toArray());
+
 });
+
+Route::post('postblog', 'blogsController@postComment' );
+Route::get('getComments/{blog_id}','blogsController@getComments');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Sentinel;
 
+
 class member extends Controller
 {
     public function login_form(){
@@ -30,6 +31,8 @@ class member extends Controller
             ->withErrors('Invalid login or password.');
     
     }
+
+    
 
     
 
