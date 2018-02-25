@@ -29,3 +29,5 @@ Route::get('blog/{id}', function($id)
 
 Route::post('postblog', 'blogsController@postComment' );
 Route::get('getComments/{blog_id}','blogsController@getComments');
+
+Route::post('saveVisitor','visitorsController@saveVisitor');
