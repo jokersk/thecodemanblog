@@ -17,7 +17,7 @@ use App\Models\blogs;
 
 Route::get('blogs-list', function()
 {
-    return response()->json(blogs::where('status',"=",1)->all()->toArray());
+    return response()->json(blogs::where('status',1)->get()->toArray());
 });
 
 Route::get('blog/{id}', function($id)
