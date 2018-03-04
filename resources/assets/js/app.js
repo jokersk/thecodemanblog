@@ -8,6 +8,8 @@
 require('./bootstrap');
 require('materialize-css');
 
+
+window.axios = Request('axios');
 window.Vue = require('vue');
 
 /**

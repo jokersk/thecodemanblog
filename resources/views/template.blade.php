@@ -11,4 +11,8 @@
 <div class="container py3">
     @yield('content')
 </div>
+<script>
+var site_url = "{{url('/')}}"
+</script>
 <script src="{{asset('js/app.js')}}"></script>
+@stack('scripts')

@@ -25,6 +25,8 @@ Route::get("test",function(){
     return \Request::getClientIp(true);
 });
 
+Route::get('updateStatus/{blogid}/{status}','blogsController@updateStatus');
+
 
 
 

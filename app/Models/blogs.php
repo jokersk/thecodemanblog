@@ -21,5 +21,12 @@ class blogs extends Model
     public function comments(){
         return $this->hasMany(comments::class);
     }
+    public function getStatusNameAttribute(){
+        if($this->status == 1)
+            return "on";
+        else 
+            return "off";
+
+    }
 
 }

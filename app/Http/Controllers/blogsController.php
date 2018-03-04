@@ -59,4 +59,10 @@ class blogsController extends Controller
         
         return redirect("blogs/detail/{$blog->id}");
     }
+
+    public function updateStatus($blogId,$status){
+        $blog = blogs::find($blogId);
+        $blog->status = $status;
+        $blog->save();
+    }
 }

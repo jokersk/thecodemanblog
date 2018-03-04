@@ -7,9 +7,19 @@
         border-radius: 5px;
     }
 </style>
-<div class="container">
+<div class="container" id="blogDetail">
 
 <h4>{{ $blog? $blog->title : 'blog' }}</h4>
+<div class="row">
+    <div class="switch">
+        <label>
+       
+        <input type="checkbox" v-model="status">
+        <span class="lever"></span>
+
+        </label>
+    </div>
+</div>
 <div class="row ">
 <form class="col s12 my3" action="{{url('blogs/create')}}" method="post">
   @csrf
@@ -53,3 +63,19 @@
 </div>
 
 <script src="{{asset('js/app.js')}}"></script>
+<script>
+    var site_url = "{{url('/')}}"
+    new Vue({
+        el:"#blogDetail",
+        data :{
+            status : {{$blog->status}},
+            blogId : {{$blog->id}}
+        },
+        watch :{
+            status(val){
+                var input = val? "1":"0";
+                axios.get(`${site_url}/updateStatus/${this.blogId}/${input}`)
+            }
+        }
+    })
+</script>
