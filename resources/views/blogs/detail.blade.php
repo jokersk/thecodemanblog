@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
+@extends('template')
+@push('style')
 <style>
     code{
         background-color: #d1ecf1;
@@ -7,6 +8,8 @@
         border-radius: 5px;
     }
 </style>
+@endpush
+@section('content')
 <div class="container" id="blogDetail">
 
 <h4>{{ $blog? $blog->title : 'blog' }}</h4>
@@ -61,7 +64,8 @@
 
   
 </div>
-
+@endsection
+@push('scripts')
 <script src="{{asset('js/app.js')}}"></script>
 <script>
     var site_url = "{{url('/')}}"
@@ -79,3 +83,4 @@
         }
     })
 </script>
+@endpush
