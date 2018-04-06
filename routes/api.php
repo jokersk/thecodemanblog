@@ -17,7 +17,7 @@ use App\Models\blogs;
 
 Route::get('blogs-list', function()
 {
-    return response()->json(blogs::where('status',1)->get()->toArray());
+    return response()->json(blogs::where('status',1)->get()->load("tags")->toArray());
 });
 
 Route::get('blog/{id}', function($id)
@@ -31,3 +31,4 @@ Route::post('postblog', 'blogsController@postComment' );
 Route::get('getComments/{blog_id}','blogsController@getComments');
 
 Route::post('saveVisitor','visitorsController@saveVisitor');
+Route::get("tagsList","tagsController@list");

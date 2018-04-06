@@ -23,6 +23,9 @@
         </label>
     </div>
 </div>
+<div class="row">
+
+</div>
 <div class="row ">
 <form class="col s12 my3" action="{{url('blogs/create')}}" method="post">
   @csrf
@@ -30,6 +33,9 @@
         <input type="hidden" name="id" value="{{$blog->id}}">
     @endif
 
+    <div class="">
+       
+    </div>
 
   <div class="row">
     <div class="input-field col s12">
@@ -66,21 +72,11 @@
 </div>
 @endsection
 @push('scripts')
-<script src="{{asset('js/app.js')}}"></script>
+
 <script>
     var site_url = "{{url('/')}}"
-    new Vue({
-        el:"#blogDetail",
-        data :{
-            status : {{$blog->status}},
-            blogId : {{$blog->id}}
-        },
-        watch :{
-            status(val){
-                var input = val? "1":"0";
-                axios.get(`${site_url}/updateStatus/${this.blogId}/${input}`)
-            }
-        }
-    })
+    var blog_status = "{{!empty($blog)? $blog->status: ''}}"
+    var blog_id = "{{!empty($blog)? $blog->id : '' }}"
+    
 </script>
 @endpush

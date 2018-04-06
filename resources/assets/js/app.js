@@ -1,25 +1,43 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import Vue from "vue"
+import VueRouter from 'vue-router'
+import blogsList from "./components/blogs-list.vue"
+import blogDetail from "./components/blogs-detail.vue"
+import tagsList from "./components/tags/list.vue"
+import tagsDetail from "./components/tags/detail.vue"
+import Vuetify from "vuetify";
+import 'vuetify/dist/vuetify.min.css';
 
-require('./bootstrap');
-require('materialize-css');
+
+Vue.use(VueRouter)
+Vue.use(Vuetify,{
+    theme: {
+        primary: '#1976D2',
+        secondary: '#424242',
+        accent: '#82B1FF',
+        error: '#FF5252',
+        info: '#2196F3',
+        success: '#4CAF50',
+        warning: '#FFC107'
+      }
+})
+const routes = [
+  { path: '/blogs/list', component: blogsList },
+  { path: '/blogs/detail', component: blogDetail },
+  { path: '/blogs/detail/:id?', component: blogDetail },
+  { path: '/tags/list', component: tagsList },
+  { path: '/tags/detail/:id?', component: tagsDetail }
+  
+]
 
 
-window.axios = Request('axios');
-window.Vue = require('vue');
+const router = new VueRouter({
+  routes, 
+  mode: 'history',
+})
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+const app = new Vue({
+  router
+}).$mount('#app')
 
-// const app = new Vue({
-//     el: '#app'
-// });

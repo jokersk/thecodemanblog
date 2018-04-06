@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\blogs;
 use Markdown;
 use App\Models\comments;
+use App\Models\tags;
+use App\Models\tags_blogs;
 use Illuminate\Support\Facades\Log;
 
 class blogsController extends Controller
 {
     public function list(){
         $blogs = blogs::all();
-        return view('blogs/lists',[
-            'blogs'=>$blogs
-        ]);
+        return response()->json($blogs->toArray());
     }
 
     public function postComment(Request $request){
@@ -36,10 +36,8 @@ class blogsController extends Controller
 
     public function detail($id = null){
         $blog = false;
-        $blog = blogs::find($id);
-        return view('blogs/detail',[
-            'blog'=>$blog
-        ]);                                                                                                                
+        $blog = blogs::find($id)->load("tags");
+        return response()->json($blog->toArray());                                                                                                 
     }
 
     public function create(Request $request){
@@ -56,8 +54,26 @@ class blogsController extends Controller
         {
             $blog = blogs::create($request->all());
         }
+
+        if($request->tags)
+        {   
+            $blog->tags()->detach();
+            foreach($request->tags as $tag)
+            {
+                $tag = tags::find($tag);
+                $blog->tags()->save($tag);
+            }
+            
+        }
+
+        return response()->json($blog->toArray());
         
-        return redirect("blogs/detail/{$blog->id}");
+    }
+
+    public function delete($blogId)
+    {
+        blogs::find($blogId)->delete();
+        return response()->json(["deleted"=>true]);
     }
 
     public function updateStatus($blogId,$status){

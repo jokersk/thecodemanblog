@@ -23,7 +23,12 @@
     "basscss": "^8.0.3",
     "basscss-responsive-margin": "^1.1.0",
     "bootstrap-css-only": "^4.0.0",
+    "marked": "^0.3.18",
     "materialize-css": "^0.100.2",
-    "showdown": "^1.8.6"
+    "showdown": "^1.8.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.0.4"
   }
 }
