@@ -40,16 +40,22 @@ class fetch extends Command
      */
     public function handle()
     {
-        // $response = Curl::to('https://www.undone.com')
-        // ->returnResponseObject()
-        // ->get();
-
-        Mail::send('email.warn', [], function($message) 
+        $response = Curl::to('https://www.undone.com')
+        ->returnResponseObject()
+        ->get();
+        
+        if($response->status != '200')
         {
-                $message
-                    ->to('situ@undone.com', 'situ')
-                    ->subject('undone server is down!');
-        });
+            Mail::send('email.warn', [], function($message) 
+            {
+                    $message
+                        ->to('situ@undone.com', 'situ')
+                        ->subject('undone server is down!');
+            });
+        }else{
+            dd('ok');
+        }
+        
 
 
         
