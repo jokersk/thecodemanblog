@@ -211,8 +211,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
-        'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class
-        
+        'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
         
 
     ],

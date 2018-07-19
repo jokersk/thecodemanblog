@@ -9,6 +9,7 @@
         "cartalyst/sentinel": "2.0.*",
         "erusev/parsedown": "^1.6",
         "fideloper/proxy": "~4.0",
+        "ixudra/curl": "^6.16",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "vtalbot/markdown": "2.0"
